@@ -20,12 +20,7 @@
 #include "rtos.h"
 #include "main-hw.h"
 
-/* Create ACLs for main box. */
-MAIN_ACL(g_main_acl);
-
-/* Enable uVisor. */
-UVISOR_SET_MODE_ACL(UVISOR_ENABLED, g_main_acl);
-UVISOR_SET_PAGE_HEAP(2 * 1024, 8);
+#include "partition_description_box_main.inc"
 
 /* Targets with an ARMv7-M MPU needs this space adjustment to prevent a runtime
  * memory overflow error. The code below has been output directly by uVisor. */

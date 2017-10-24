@@ -1,0 +1,29 @@
+<!DOCTYPE partition SYSTEM "partition_description.dtd">
+<partition name = "box_main" priority = "osPriorityNormal">
+
+<code entry_point = "main"/>
+
+<stack size = "512"/>
+
+<heap size = "2048"/>
+
+<mmio>
+<mmioregion_named base = "CMU" permissions = "UVISOR_TACLDEF_PERIPH"/>
+<mmioregion_named base = "MSC" permissions = "UVISOR_TACLDEF_PERIPH"/>
+<mmioregion_named base = "GPIO" permissions = "UVISOR_TACLDEF_PERIPH"/>
+<mmioregion_named base = "TIMER0" permissions = "UVISOR_TACLDEF_PERIPH"/>
+<mmioregion_named base = "UART0" permissions = "UVISOR_TACLDEF_PERIPH"/>
+<mmioregion base = "0x0FE08000" size = "0x1000" permissions = "UVISOR_TACLDEF_PERIPH"/>
+<mmioregion base = "0x42000000" size = "0x2000000" permissions = "UVISOR_TACLDEF_PERIPH"/>
+</mmio>
+
+<src>
+<filename>../source/main.cpp</filename>
+</src>
+
+<!-- uVisor extensions -->
+<spm_status>UVISOR_ENABLED</spm_status>
+<context_structure_name>box_context</context_structure_name>
+<global_heap page_size = "2048" minimal_page_number = "8"/>
+
+</partition>

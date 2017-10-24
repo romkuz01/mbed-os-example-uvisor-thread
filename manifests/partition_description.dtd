@@ -1,0 +1,48 @@
+<!ELEMENT partition (code, stack, heap, mmio?, sfid*, src+, irq_num*, extern_sfid*,
+    spm_status?, context_structure_name, global_heap?)>
+<!ATTLIST partition name CDATA #REQUIRED>
+<!ATTLIST partition priority CDATA #REQUIRED>
+
+<!-- Code section definition -->
+<!ELEMENT code EMPTY>
+<!ATTLIST code entry_point CDATA #REQUIRED>
+
+<!-- Stack size definition -->
+<!ELEMENT stack EMPTY>
+<!ATTLIST stack size CDATA #REQUIRED>
+
+<!-- Heap size definition -->
+<!ELEMENT heap EMPTY>
+<!ATTLIST heap size CDATA #REQUIRED>
+
+<!-- MMIO regions -->
+<!ELEMENT mmio (mmioregion_named*, mmioregion*)>
+<!ELEMENT mmioregion_named EMPTY>
+<!ATTLIST mmioregion_named base CDATA #REQUIRED>
+<!ATTLIST mmioregion_named permissions CDATA #REQUIRED>
+<!ELEMENT mmioregion EMPTY>
+<!ATTLIST mmioregion base CDATA #REQUIRED>
+<!ATTLIST mmioregion size CDATA #REQUIRED>
+<!ATTLIST mmioregion permissions CDATA #REQUIRED>
+
+<!-- Declaration of SFIDs -->
+<!ELEMENT sfid (#PCDATA)>
+
+<!-- Source files -->
+<!ELEMENT src (filename+)>
+<!ELEMENT filename (#PCDATA)>
+
+<!-- Reserved IRQ numbers -->
+<!ELEMENT irq_num (#PCDATA)>
+
+<!-- SFID dependencies -->
+<!ELEMENT extern_sfid (#PCDATA)>
+
+<!--uVisor extensions -->
+<!ELEMENT spm_status (#PCDATA)>
+
+<!ELEMENT context_structure_name (#PCDATA)>
+
+<!ELEMENT global_heap EMPTY>
+<!ATTLIST global_heap page_size CDATA #REQUIRED>
+<!ATTLIST global_heap minimal_page_number CDATA #REQUIRED>

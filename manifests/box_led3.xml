@@ -1,0 +1,17 @@
+<!DOCTYPE partition SYSTEM "partition_description.dtd">
+<partition name = "box_led3" priority = "osPriorityNormal">
+
+<code entry_point = "led3_main"/>
+
+<stack size = "512"/>
+
+<heap size = "2048"/>
+
+<src>
+<filename>../source/led3.cpp</filename>
+</src>
+
+<!-- uVisor extensions -->
+<context_structure_name>box_context</context_structure_name>
+
+</partition>

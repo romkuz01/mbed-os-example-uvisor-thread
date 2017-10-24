@@ -9,20 +9,7 @@ struct box_context {
     int toggle;
 };
 
-static const UvisorBoxAclItem acl[] = {
-};
-
-static void led3_main(const void *);
-
-/* Box configuration
- * We need at least 1kB in the main thread as we use printf in it. The interrupt
- * stack size can be smaller as we do not do anything special in them. */
-UVISOR_BOX_NAMESPACE(NULL);
-UVISOR_BOX_HEAPSIZE(2 * 1024);
-UVISOR_BOX_MAIN(led3_main, osPriorityNormal, 1024);
-UVISOR_BOX_CONFIG(box_led3, acl, 512, box_context);
-
-#define uvisor_ctx ((box_context *) __uvisor_ctx)
+#include "partition_description_box_led3.inc"
 
 static void run_3(void)
 {

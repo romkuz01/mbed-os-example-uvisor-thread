@@ -1,0 +1,19 @@
+<!DOCTYPE partition SYSTEM "partition_description.dtd">
+<partition name = "box_led1" priority = "osPriorityNormal">
+
+<code entry_point = "led1_main"/>
+
+<stack size = "512"/>
+
+<heap size = "2048"/>
+
+<src>
+<filename>../source/led1.cpp</filename>
+</src>
+
+<!-- uVisor extensions -->
+<context_structure_name>box_context</context_structure_name>
+
+<global_heap page_size = "0x1000" minimal_page_number = "8"/>
+
+</partition>

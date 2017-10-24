@@ -9,20 +9,7 @@ struct box_context {
     uint32_t heartbeat;
 };
 
-static const UvisorBoxAclItem acl[] = {
-};
-
-static void led2_main(const void *);
-
-/* Box configuration
- * We do not need large stacks in either the main nor the interrupt thread, as
- * we do not do anything special in them. */
-UVISOR_BOX_NAMESPACE(NULL);
-UVISOR_BOX_HEAPSIZE(2 * 1024);
-UVISOR_BOX_MAIN(led2_main, osPriorityNormal, 512);
-UVISOR_BOX_CONFIG(box_led2, acl, 512, box_context);
-
-#define uvisor_ctx ((box_context *) __uvisor_ctx)
+#include "partition_description_box_led2.inc"
 
 static void led2_main(const void *)
 {
